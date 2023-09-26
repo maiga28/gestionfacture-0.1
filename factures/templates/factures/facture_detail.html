@@ -1,0 +1,68 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+  {{payment.id}}
+{% endblock %}
+
+<!-- Specific Page CSS goes HERE -->
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+              <h4 class="card-title">Détails de la Facture</h4>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table tablesorter">
+                      <thead class="text-primary">
+                          <tr>
+                              <th>Numéro de facture</th>
+                              <th>Date d'émission</th>
+                              <th></th>
+                              <th class="text-center">Total</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Facture # {{ factures.numero }}</td>
+                              <td>{{ factures.date_emission }}</td>
+                              <td></td> <!-- Vous pouvez ajouter d'autres informations de la facture ici si nécessaire -->
+                              <td class="text-center">{{ total }} GNF</td>
+                          </tr>
+                          {% if payments %}
+                              {% for payment in payments %}
+                                  <tr>
+                                      <td>Date du paiement: {{ payment.date }}</td>
+                                      <td>Montant: {{ payment.amount }}</td>
+                                      <td>Mode de paiement: {{ payment.payment_method }}</td>
+                                  </tr>
+                              {% endfor %}
+                          {% else %}
+                              <tr>
+                                  <td colspan="4">Aucun paiement n'a été effectué pour cette facture.</td>
+                              </tr>
+                          {% endif %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+      </div>
+    <h1></h1>
+  
+    
+    {% endblock %}
+
+    <!-- Specific Page JS goes HERE -->
+    {% block javascripts %}
+    {% endblock %}
+    
+
+
+
