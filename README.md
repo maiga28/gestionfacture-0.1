@@ -54,17 +54,3 @@ L'application de gestion des factures avec Django est une solution complète pou
 3. **Lancer le Serveur de Développement**
    ```bash
    python manage.py runserver
-
-4. **Cloner le Référentiel**
-   ```bash
-   - Django==3.2.16
-   - asgiref==3.4.1
-   - autopep8==1.6.0
-   - dj-database-url==0.5.0
-   - gunicorn==20.1.0
-   - pycodestyle==2.8.0
-   - pytz==2021.3
-   - sqlparse==0.4.2
-   - toml==0.10.2
-   - whitenoise==5.3.0
-   - django-environ==0.8.1
