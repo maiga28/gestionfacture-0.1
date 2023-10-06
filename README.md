@@ -1,6 +1,6 @@
 # Gestion des Factures avec Django
 
-L'application de gestion des factures avec Django est une solution complète pour les petites entreprises qui cherchent à simplifier leur processus de facturation. Cette application offre une gamme de fonctionnalités puissantes pour aider les entreprises à gérer leurs clients, leurs produits/services, leurs factures et leurs paiements de manière efficace.
+L'application de gestion des factures avec Django est une solution complète pour les petites entreprises qui cherchent à simplifier leur processus de facturation. Cette application offre une gamme de fonctionnalités pour aider les entreprises à gérer leurs clients, leurs produits/services, leurs factures et leurs paiements de manière efficace.
 
 ## Fonctionnalités clés
 
