@@ -47,3 +47,18 @@ L'application de gestion des factures avec Django est une solution complète pou
    ```bash
    git clone [URL_DU_RÉFÉRENTIEL]
    cd nom_du_projet
+   
+2. **Cloner le Référentiel**
+   ```bash
+   git clone [URL_DU_RÉFÉRENTIEL]
+   cd nom_du_projet
+   
+3. **Cloner le Référentiel**
+   ```bash
+   git clone [URL_DU_RÉFÉRENTIEL]
+   cd nom_du_projet
+   
+4. **Cloner le Référentiel**
+   ```bash
+   git clone [URL_DU_RÉFÉRENTIEL]
+   cd nom_du_projet
