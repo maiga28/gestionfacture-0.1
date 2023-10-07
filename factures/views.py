@@ -1,16 +1,13 @@
 # facturation/views.py
 from django.shortcuts import render, redirect
 from clients.models import Client  # Assurez-vous que le nom du modèle est correct ici
-from .models import Facture
-from products.models import Product  # Assurez-vous que le nom du modèle est correct ici
-from .models import LigneFacture
 from django.contrib.auth.decorators import login_required
 from .forms import FactureForm
 
 
 
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import FactureForm  # Assurez-vous d'importer votre formulaire FactureForm
 from .models import Facture, LigneFacture
 from products.models import Product
@@ -63,8 +60,8 @@ def liste_factures(request):
     factures = Facture.objects.all()  # Utilisez le nom de variable au pluriel pour la liste de factures
     return render(request, 'factures/liste_facture.html', {'factures': factures})  # Assurez-vous que le nom du dossier du template est correct
 
-def facture_detail(request, facture_id):
-    factures = Facture.objects.get(pk=facture_id)  # Utilisez Facture.objects.get(pk=...) pour obtenir la factures
+def facture_detail(request, pk):
+    factures = Facture.objects.get(pk=pk)  # Utilisez Facture.objects.get(pk=...) pour obtenir la factures
     total = factures.calculer_total()  # Corrigez "caculer_total" en "calculer_total"
     payments = factures.payments.all()  # Récupérer les paiements associés à cette factures
     context = {
@@ -74,5 +71,13 @@ def facture_detail(request, facture_id):
     }
     return render(request, 'factures/facture_detail.html', context)
 
-
-
+def modifier_facture(request, pk):
+    factures = get_object_or_404(Facture, pk=pk)
+    if request.method == 'POST':
+        form = FactureForm(request.POST, isinstance=factures)
+        if form.is_valid():
+            form.save()
+            return redirect('factures:liste_factures')
+        else:
+            form = FactureForm(instance=factures)
+        return render(request, 'factures/liste_facture.html', {'factures': factures})  

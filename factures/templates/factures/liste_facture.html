@@ -57,8 +57,11 @@
                         <td>{{ facture.statut }}</td>
                         <td>
                             <a href="{% url 'factures:facture_detail' facture_id=facture.pk %}">Détails</a>
-                            <a href="#">Modifier</a>
-                            <a href="#">Supprimer</a>
+                            <a href="{% url 'payment:add_payment' facture.pk %}">Payment</a>
+                            <a href="{% url 'factures:facture_detail' facture_id=facture.pk %}">Supprimer</a>
+                            <a href="{% url 'factures:facture_detail' facture_id=facture.pk %}">Supprimer</a>
+                            <a href="{% url 'factures:facture_detail' facture_id=facture.pk %}">Voir la facture</a>
+
                         </td>
                     </tr>
                     {% endfor %}

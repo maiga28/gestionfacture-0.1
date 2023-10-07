@@ -18,37 +18,38 @@
           </div>
           <div class="card-body">
               <div class="table-responsive">
-                  <table class="table tablesorter">
-                      <thead class="text-primary">
-                          <tr>
-                              <th>Numéro de facture</th>
-                              <th>Date d'émission</th>
-                              <th></th>
-                              <th class="text-center">Total</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Facture # {{ factures.numero }}</td>
-                              <td>{{ factures.date_emission }}</td>
-                              <td></td> <!-- Vous pouvez ajouter d'autres informations de la facture ici si nécessaire -->
-                              <td class="text-center">{{ total }} GNF</td>
-                          </tr>
-                          {% if payments %}
-                              {% for payment in payments %}
-                                  <tr>
-                                      <td>Date du paiement: {{ payment.date }}</td>
-                                      <td>Montant: {{ payment.amount }}</td>
-                                      <td>Mode de paiement: {{ payment.payment_method }}</td>
-                                  </tr>
-                              {% endfor %}
-                          {% else %}
-                              <tr>
-                                  <td colspan="4">Aucun paiement n'a été effectué pour cette facture.</td>
-                              </tr>
-                          {% endif %}
-                      </tbody>
-                  </table>
+                <table class="table tablesorter">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Numéro de facture</th>
+                            <th>Date d'émission</th>
+                            <th></th> <!-- Vous pouvez ajouter d'autres informations de la facture ici si nécessaire -->
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Facture # {{ factures.numero }}</td>
+                            <td>{{ factures.date_emission }}</td>
+                            <td></td> <!-- Ajoutez ici d'autres détails de la facture si nécessaire -->
+                            <td class="text-center">{{ payment.amount }} GNF</td> <!-- Assurez-vous que 'payment.amount' contient le montant correct -->
+                        </tr>
+                        {% if payments %}
+                            {% for payment in payments %}
+                                <tr>
+                                    <td>Date du paiement : {{ payment.date|date:"Y-m-d" }}</td> <!-- Utilisation du filtre de date pour formater la date -->
+                                    <td>Montant : {{ payment.amount|floatformat:2 }} GNF</td> <!-- Utilisation du filtre floatformat pour formater le montant avec deux décimales -->
+                                    <td>Mode de paiement : {{ payment.payment_method }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3">Aucun paiement n'a été effectué pour cette facture.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                
               </div>
           </div>
       </div>
